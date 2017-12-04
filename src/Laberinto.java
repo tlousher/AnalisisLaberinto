@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Laberinto implements  Runnable
 {
-         Thread t = new Thread(this);
+        Thread t = new Thread(this);
 	final static char PARED = '*';
 	final static char VISITADO = '-';
 	final static char INCORRECTO = 'x';
@@ -25,7 +25,7 @@ public class Laberinto implements  Runnable
 
 	static char lab[][]= obtener_matriz();
         
-        private int Counter = 0;
+        static long counter = 0;
 
 
    
@@ -51,12 +51,12 @@ public class Laberinto implements  Runnable
             }else{
                 System.out.println("////////////////////////////////////\n         CAMINO SIN SALIDA          \n////////////////////////////////////");
             }
-}
+            
+            System.out.println("\nTiempo requerido (en nano-segundos): " + (System.nanoTime()-counter));
+        }
 
 	public boolean recorrer(int f, int c)
 	{
-            System.out.println("Move " + Counter);
-            Counter++;
             boolean salida=false;
 		lab[f][c]=VISITADO;
 
@@ -136,18 +136,18 @@ public class Laberinto implements  Runnable
 
 	public static  void main(String args[])
 	{
-               System.out.println("////////////////////////////////////////////////");
                System.out.println("           BIENVENIDO AL LABERINTO              ");
-               System.out.println(" UNIVERSIDAD DE CUENCA    ");
-               System.out.println(" FACULTAD DE INGENIERIA    ");
-               System.out.println(" INTEGRANTS:    ");
+               System.out.println(" Autores de referencia:    ");
                System.out.println("            SANTIAGO ALULEMA    ");
                System.out.println("            TATIANA SANGUÑA    ");
                System.out.println("            RAUL SUQUINAGUA    ");
-               System.out.println(" INGENIERO:    ");
-               System.out.println("         GABRIEL BARROS    ");
-               System.out.println("////////////////////////////////////////////////\n");
+               System.out.println(" Estudiante en edicion: ");
+               System.out.println("            HAROLD TROYA    ");
+               System.out.println(" Profesor:    ");
+               System.out.println("         GABRIEL BARROS    \n");
+               counter = System.nanoTime();
 	       Laberinto lab = new Laberinto();
+               
            
 	}
         
